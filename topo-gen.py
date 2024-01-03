@@ -11,9 +11,9 @@ from collections import deque
 
 
 def usage(tool_name):
-    print ""
-    print "usage: " + tool_name + " -c <configFile> -o <outputFile>"
-    print ""
+    print ("")
+    print ("usage: " + tool_name + " -c <configFile> -o <outputFile>")
+    print ("")
 
 
 def main(argv):
@@ -60,12 +60,12 @@ def main(argv):
 
     # Ensure that configFile is provided.
     if configFile == '':
-        print "Must specify config file"
+        print ("Must specify config file")
         sys.exit(1)
 
     # Ensure that outputFile is provided.
     if outputFile == '':
-        print "Must specify output file"
+        print ("Must specify output file")
         sys.exit(1)
 
     # Read configuration.
@@ -76,28 +76,28 @@ def main(argv):
     if "routers" in config:
         routers = int(config["routers"])
     else:
-        print "Missing number of routers in config"
+        print ("Missing number of routers in config")
         sys.exit(1)
 
     # Read number of clients from configuration.
     if "clients" in config:
         clients = int(config["clients"])
     else:
-        print "Missing number of clients in config"
+        print ("Missing number of clients in config")
         sys.exit(1)
 
     # Read number of producers from configuration.
     if "servers" in config:
         servers = int(config["servers"])
     else:
-        print "Missing number of servers in config"
+        print ("Missing number of servers in config")
         sys.exit(1)
 
     # Read number of channels from configuration.
     if "channels" in config:
         channels = int(config["channels"])
     else:
-        print "Missing number of channels in config"
+        print ("Missing number of channels in config")
         sys.exit(1)
 
     # Read dimensions from configuration.
@@ -105,7 +105,7 @@ def main(argv):
         maxXCoord = int(config["dimensions"].split("x")[0])
         maxYCoord = int(config["dimensions"].split("x")[1])
     else:
-        print "Missing dimensions in config"
+        print ("Missing dimensions in config")
         sys.exit(1)
 
     # Read number of router links from configuration.
@@ -117,7 +117,7 @@ def main(argv):
             minRouterLinks = int(config["router-links"])
             maxRouterLinks = int(config["router-links"])
     else:
-        print "Missing number of routers links in config"
+        print ("Missing number of routers links in config")
         sys.exit(1)
 
     # Read number of client links from configuration.
@@ -131,7 +131,7 @@ def main(argv):
             minClientLinks = int(config["client-links"])
             maxClientLinks = int(config["client-links"])
     else:
-        print "Missing number of client links in config"
+        print ("Missing number of client links in config")
         sys.exit(1)
 
     # Read number of server links from configuration.
@@ -145,14 +145,14 @@ def main(argv):
             minServerLinks = int(config["server-links"])
             maxServerLinks = int(config["server-links"])
     else:
-        print "Missing number of server links in config"
+        print ("Missing number of server links in config")
         sys.exit(1)
 
     # Read list of channel rates from configuration.
     if "channel-rates" in config:
         channelRates = config["channel-rates"].split(",")
     else:
-        print "Missing channel rates in config"
+        print ("Missing channel rates in config")
         sys.exit(1)
 
     # Read number of topologies from configuration.
@@ -166,7 +166,7 @@ def main(argv):
         elif config["plot"] in ("False", "false"):
             plotTopology = False
         else:
-            print "Invalid plot value (should be True/False)"
+            print ("Invalid plot value (should be True/False)")
             sys.exit(1)
 
     r_startindex = 1
@@ -399,7 +399,7 @@ def isConnected(vertices, connections):
     colors[1] = "g"
     count = 0
     queue = deque([1])
-    while len(queue) is not 0:
+    while len(queue) != 0:
         u = queue.popleft()
         for v in edges[u]:
             if colors[v] == "w":
